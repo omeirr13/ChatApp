@@ -1,0 +1,33 @@
+.user-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-card {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.user-card img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.user-card h3 {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.user-card p {
+    font-size: 14px;
+    color: #666;
+}
+

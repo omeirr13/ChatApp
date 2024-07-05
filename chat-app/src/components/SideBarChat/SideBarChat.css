@@ -1,0 +1,13 @@
+.sideBar{
+    height:35rem;
+    width:16rem;
+    background-color: rgb(27, 29, 32);
+    border-radius:1rem;
+    border-right: 10px solid black;
+    overflow-y: auto;
+}
+
+.container{
+    padding:17px;
+    
+}

@@ -1,0 +1,28 @@
+.messageListContainer{
+    border-radius:1rem;
+    height:27rem;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    overflow-y:auto;
+    overflow-wrap: break-word;
+}
+
+.headingContainer
+{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.selectHeading{
+    font-size: 20px;
+}
+
+.noMessages{
+    color:white;
+    display: flex;
+    justify-content: center;
+    height:27rem;
+    align-items: center;    
+}
