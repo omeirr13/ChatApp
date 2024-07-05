@@ -21,13 +21,11 @@ export default function UserList() {
 
 
     const usersWithTimestamps = useMemo(() => {
-        // Create an array of objects with user details and connection timestamps
         let usersWithTimestamps = storedUsers.map(user => ({
             ...user,
             timestamp: myConnections[user.email] ? myConnections[user.email][1] : null
         }));
 
-        // Sort users by timestamp descending
         usersWithTimestamps.sort((a, b) => {
             if (a.timestamp > b.timestamp) return -1;
             if (a.timestamp < b.timestamp) return 1;
