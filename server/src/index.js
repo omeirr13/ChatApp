@@ -84,6 +84,18 @@ io.on('connection', socket => {
         console.log(users);
     });
 
+    socket.on('sendRequest', (sendRequestToEmail, loggedInUserEmail) => {
+        if (users.hasOwnProperty(sendRequestToEmail)) {
+            const socketId = users[sendRequestToEmail];
+            io.to(socketId).emit('addRequest', loggedInUserEmail);
+        }
+    });
+
+    socket.on('updateChatSideBar', (otherSideEmail, emailToUpdate) => {
+        const socketId = users[emailToUpdate];
+        io.to(socketId).emit('updateChatSideBar', otherSideEmail, emailToUpdate);
+
+    });
 });
 
 httpServer.listen(4000, () => {
