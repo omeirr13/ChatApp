@@ -1,0 +1,15 @@
+.chatHeaderContainer
+{
+    height:5rem;
+    background-color:rgb(43 54 62);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.chattingWith, .chattingEmail{
+    margin:0;
+    margin-left:20px;
+    color: #f7f7f7;
+    padding:0;
+}

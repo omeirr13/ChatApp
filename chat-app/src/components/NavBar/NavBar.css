@@ -1,0 +1,30 @@
+nav{
+    padding:1rem 4rem;
+    display:flex;
+    background-color: rgb(37, 40, 42);
+}
+
+.nav-items{
+    display: flex;
+    gap:3rem;
+}
+.nav-items li{
+    list-style-type: none;
+}
+
+.nav-items a{
+    font-size:21px;
+    text-decoration: none;
+    color:white;
+
+}
+.nav-heading{
+    width:100%;
+    color:white;
+}
+
+.email{
+    font-size:21px;
+    text-decoration: none;
+    color:white;
+}

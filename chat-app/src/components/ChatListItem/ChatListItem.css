@@ -1,0 +1,49 @@
+.container{
+    padding:17px;
+}
+
+.item{
+    width:211px;
+    margin-top:10px;
+    height:71px;
+    background-color: rgb(43 54 62);
+    color:white;
+    overflow-x:hidden;
+    padding:2px 5px;
+    overflow-y:hidden;   
+    border-radius:5px;
+}
+
+.item-name{
+    margin:0;
+    font-size:17px;
+    font-weight: bold;
+}
+.item-text{
+    font-size:14px;
+}
+
+.itemNameTime{
+    display:flex;
+    justify-content: space-between;
+}
+
+.time{
+    font-size:13px;
+}
+
+.itemNameMessageCount{
+    display: flex;
+}
+
+.messageCount{
+    margin-left:11px;
+    background-color: #205078;
+    border-radius:10px;
+    color:rgb(241, 241, 241);
+    padding: 0 7px;
+}
+
+a{
+    text-decoration: none;
+}

@@ -1,0 +1,9 @@
+.errorText{
+    color:red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:80vh;
+    font-weight: bold;
+    font-size:50px
+}

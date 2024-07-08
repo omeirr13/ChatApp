@@ -1,0 +1,19 @@
+.messageInputContainer{
+    display:flex;
+    padding: 0 1rem;
+}
+
+.messageBodyInput{
+    width:491px !important;
+    margin-right:10px;
+}
+.sendMessageBtn{
+    margin:0;
+    background-color: rgb(28, 85, 135);
+    width:6rem;
+}
+
+.sendMessageBtn:hover{
+    background-color: rgb(27, 74, 115);;
+
+}

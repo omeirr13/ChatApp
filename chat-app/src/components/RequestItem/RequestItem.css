@@ -1,0 +1,25 @@
+.userItem{
+    width:169px;
+    margin-top:10px;
+    height:71px;
+    background-color: rgb(43 54 62);
+    color:white;
+    overflow-x:hidden;
+    padding:2px 5px;
+    overflow-y:hidden;   
+    border-radius:5px;
+}
+
+.requestBtn{
+    width:65px !important;
+    height:36px;
+    margin-left:10px;
+}
+
+.requestBtns{
+    display:flex;
+}
+
+.rejectBtn{
+    background-color: red;
+}

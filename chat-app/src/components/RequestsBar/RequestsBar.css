@@ -1,0 +1,20 @@
+.connectionBar{
+    height:35rem;
+    width:13rem;
+    margin-left:10px;
+    background-color: rgb(27, 29, 32);
+    border-radius:1rem;
+    border-right: 10px solid black;
+    overflow-y: auto;
+}
+
+.container{
+    padding:17px;
+}
+
+.requestHeading{
+    display: flex;
+    justify-content: center;
+    color:white;
+    margin-bottom:0;
+}
