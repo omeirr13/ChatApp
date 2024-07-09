@@ -1,0 +1,29 @@
+
+
+input{
+    border:none;
+}
+
+.sideBarToolsInput::placeholder{
+    font-size:14px;
+    color:#b4b4b4;
+    font-weight:500;
+}
+
+.option-container{
+    display:grid;
+    grid-template-columns: 1fr 1fr; /* Two columns with the first one taking 1 part and the second 2 parts of the available space */
+
+}
+
+
+.option-item {
+    margin-left:3px;
+    border: 1px solid #eaeaea;
+    padding: 6px 12px;
+    border-radius:8px 8px 8px 8px;
+}
+
+.sideBarToolLastTool{
+    background-color:#854bff;
+}

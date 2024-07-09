@@ -1,0 +1,7 @@
+.userInfoContainer{
+    background-color: white;
+    width:19rem;
+    border-left:3px solid #fafafa;
+    padding-bottom:23px;
+    overflow-y:auto;
+}

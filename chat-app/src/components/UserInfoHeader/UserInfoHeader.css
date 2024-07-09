@@ -1,0 +1,48 @@
+.userProfileImage{
+    width: 80px;
+    height: 80px;
+    border-radius: 3rem;
+    margin-right:9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e8b9b1;
+}
+
+.userInfoHeaderContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height:12rem;
+    border-bottom: 3px solid #fafafa;
+}
+
+.userProfileName{
+    margin: 10px 0;
+    font-size:18px;
+}
+
+.userInfoContactButtons{
+    display:flex;
+}
+
+.userInfoContactButton{
+    width: 40px;
+    height: 40px;
+    border-radius: 3rem;
+    margin-right:9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e8b9b1;
+}
+
+.userInfoCallButton{
+    background-color: #f2f2f2;
+}
+
+.userInfoMessageButton{
+    background-color:#ece7fe ;
+}
+

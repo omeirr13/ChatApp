@@ -1,0 +1,23 @@
+.sideBarButtonsContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* Two columns with the first one taking 1 part and the second 2 parts of the available space */
+    /* border-top:1px solid #eaeaea; */
+    border-bottom:1px solid #eaeaea;
+}
+
+
+.sideBarButtonItem {
+    height:29px;
+    padding: 6px 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.sideBarButtonItem > p{
+    margin:0;
+    font-size:14px;
+    color:grey;
+    font-weight: bold;
+}

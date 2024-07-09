@@ -1,0 +1,293 @@
+.userInfoContactContainer{
+    width:100%;
+    display:flex;
+    flex-direction: column;
+}
+
+.openContactInfoHeader{
+    padding: 0 13px;
+    display: flex;
+    justify-content: space-between;
+}
+.openContactInfoIcon{
+    margin-top:20px;
+}
+
+.userEmailContainer{
+    display:flex;
+    flex-direction: column;
+}
+.openContactHeading{
+    font-size:15px;
+}
+.userEmailHeader{
+    display:flex;
+    padding:0 13px;
+    justify-content: space-between;
+}
+.userEmailHeading{
+    color:#666666;
+margin:0;
+font-size:13px;
+}
+.userEmailPlusIcon{
+    color:#843fff;
+}
+
+.emailContainer{
+    display: flex;
+    flex-direction: column;
+    margin:8px 15px;
+    border-radius: 10px;
+    background-color: #f7f7f7;;
+}
+
+
+.emailItem{
+    position: relative;
+    height:30px;
+    margin-top:1px;
+    padding:3px 11px;
+    display: flex;
+    align-items: center;
+}
+
+.emailItem:not(:last-child):after{
+    content: "";
+    position: absolute;
+    bottom:-1px;
+    width: 91%; 
+    background-color: #dfdfdf; 
+    height: 1px; 
+}
+.iconAndEmail{
+    display:flex;
+    gap:10px;
+}
+
+.emailIcon{
+    margin-top:14px;
+    font-size:13px;
+}
+
+.emailItemEmailText{
+    font-size:13px;
+}
+
+
+
+
+
+.phoneContainer{
+    display: flex;
+    flex-direction: column;
+    margin:8px 15px;
+    border-radius: 10px;
+    background-color: #f7f7f7;;
+}
+
+
+.phoneItem{
+    position: relative;
+    height:30px;
+    margin-top:1px;
+    padding:3px 11px;
+    display: flex;
+    align-items: center;
+}
+
+.phoneItem:not(:last-child):after{
+    content: "";
+    position: absolute;
+    bottom:-1px;
+    width: 91%; 
+    background-color: #dfdfdf; 
+    height: 1px; 
+}
+.iconAndPhone{
+    display:flex;
+    gap:10px;
+}
+
+.phoneIcon{
+    margin-top:14px;
+    font-size:13px;
+}
+
+.phoneItemPhoneText{
+    font-size:13px;
+}
+
+
+.userPhoneHeader{
+    display:flex;
+    padding:0 13px;
+    justify-content: space-between;
+}
+.userPhoneHeading{
+    color:#666666;
+margin:0;
+font-size:13px;
+}
+.userPhonePlusIcon{
+    color:#843fff;
+}
+
+.phoneContainer{
+    display: flex;
+    flex-direction: column;
+    margin:8px 15px;
+    border-radius: 10px;
+    background-color: #f7f7f7;;
+}
+
+.openTagInfo{
+    border-top:3px solid #fafafa;
+}
+
+.openTagInfoHeader{
+    padding: 0 13px;
+    display: flex;
+    justify-content: space-between;
+}
+.openTagInfoIcon{
+    margin-top:20px;
+}
+
+.openTagHeading{
+    font-size:15px;
+}
+
+
+
+.openDNDInfoHeader{
+    padding: 0 13px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.openDNDHeading{
+    font-size:15px;
+}
+
+.openDNDInfoIcon{
+    margin-top:20px;
+}
+
+
+.openDNDInfo{
+    border-top:3px solid #fafafa;
+
+}
+
+.userDFDContainer{
+    display:flex;
+    flex-direction: column;
+}
+
+.DFDContainer{
+    display: flex;
+    flex-direction: column;
+    margin:8px 15px;
+    border-radius: 10px;
+}
+
+.DFDItem{
+    position: relative;
+    height:30px;
+    margin-top:1px;
+    padding:3px 11px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.DFDItem:first-child:after{
+    content: "";
+    position: absolute;
+    bottom:-1px;
+    width: 91%; 
+    background-color: #dfdfdf; 
+    height: 1px; 
+}
+.iconAndDFD{
+    display:flex;
+    gap:10px;
+}
+
+.DFDIcon{
+    margin-top:14px;
+    font-size:13px;
+    color:grey;
+}
+
+.DFDItemDFDText{
+    font-size:13px;
+}
+
+
+.DFDItem:first-child{
+    padding-bottom:12px;
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 47px;
+    height: 24px;
+    margin-top:12px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 21px;
+    left: 3px;
+    bottom: 2px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  input:checked + .slider:before {
+    -webkit-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
+  }
+
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+  .DFDItemDFDText{
+    font-size:12px;
+  }
