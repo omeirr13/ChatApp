@@ -21,7 +21,7 @@ export default function AllUserItem({ email }) {
 
     return (
         <div>
-            <div className="userItem">
+            <div className="userItem selectedUserItem">
                 <div className="itemNameTime">
                     <div className="itemNameMessageCount">
                         <p className="item-name">{email}</p>

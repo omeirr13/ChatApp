@@ -1,12 +1,17 @@
-.container{
-    padding:17px;
+.chatListItemWrapper{
+    display: flex;
+    justify-content: space-between;
+    background-color: white(43 54 62);
+    padding-left:5px;
+    border-bottom: 3px solid #fafafa;
 }
-
-.item{
-    width:211px;
-    margin-top:10px;
-    height:71px;
-    background-color: rgb(43 54 62);
+.selectedChatListItem{
+    background-color: #fbf6f3;
+}
+.chatListItem{
+    display: flex;
+    align-items: center;
+    height:83px;
     color:white;
     overflow-x:hidden;
     padding:2px 5px;
@@ -14,13 +19,17 @@
     border-radius:5px;
 }
 
-.item-name{
+.chatListItemName{
     margin:0;
     font-size:17px;
     font-weight: bold;
+    color:#4d4d4d;
 }
-.item-text{
+.chatListItemLastMessage{
     font-size:14px;
+    color:#958680;
+
+    
 }
 
 .itemNameTime{
@@ -29,7 +38,10 @@
 }
 
 .time{
-    font-size:13px;
+    font-weight:bold;
+    font-size:10px;
+    margin-right:9px;
+    margin-bottom: 16px;
 }
 
 .itemNameMessageCount{
@@ -46,4 +58,32 @@
 
 a{
     text-decoration: none;
+}
+
+.chatListItemNameCount{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+.chatListItemNameCount > p{
+    margin:0;
+}
+
+.chatListItemTime{
+    display: flex;
+    align-items: center;
+    color:#dfdad8;
+    
+}
+
+.chatListItemImage{
+        width: 40px;
+        height: 40px;
+        border-radius: 2rem;
+        margin-right:9px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #e8b9b1;
 }

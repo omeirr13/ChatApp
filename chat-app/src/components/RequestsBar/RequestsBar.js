@@ -15,31 +15,7 @@ export default function RequestsBar() {
 
     //hooks
     //useEffects
-    useEffect(() => {
-        const fetchPendingRequests = () => {
-            const allPendingRequests = getItem() || {};
-            const myPendingRequests = allPendingRequests[loggedInUser] || [];
-            setPendingRequests(myPendingRequests);
-        };
-
-        fetchPendingRequests();
-
-    }, [updateRequestBar]);
-
-    useEffect(() => {
-        const handleAddRequest = (requestFromEmail) => {
-            console.log('Handling new request from:', requestFromEmail);
-            setPendingRequestList(loggedInUser, requestFromEmail);
-            setUpdateRequestBar((prev) => !prev);
-        };
-
-        socket.on('addRequest', handleAddRequest);
-
-        return () => {
-            socket.off('addRequest', handleAddRequest);
-        };
-    }, [socket, setPendingRequestList, loggedInUser, setUpdateRequestBar]);
-
+    
     return (
         <div className="connectionBar">
             <div className="requestHeading">

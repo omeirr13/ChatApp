@@ -28,6 +28,7 @@ export default function MessageList() {
 
     //useEffects
     useEffect(() => {
+        console.log('message list useffec');
         const email1 = getItem();
         const email2 = chattingWith;
         const [firstEmail, secondEmail] = email1 < email2 ? [email1, email2] : [email2, email1];
@@ -37,17 +38,23 @@ export default function MessageList() {
         console.log('in chat of: ', chattingWith);
         console.log('message sent by: ', email1);
         console.log('message got by: ', email2);
+        console.log(lastChatWith);
         messages = messages[key];
+        console.log(messages);
         if (messages) {
-            if (lastChatWith) {//check if last chat exists (chatted with anyone before)
-                if (lastChatWith === chattingWith) { //if exists check if last chat with is current open chat i.e chattingWith
-                    setCurrentMessageList(messages.reverse());
-                }
-                //else dont update the message list
-            }
-            else { //else update the message list
-                setCurrentMessageList(messages.reverse());
-            }
+            // console.log('in1');
+            // if (lastChatWith) {//check if last chat exists (chatted with anyone before)
+            // console.log('in2');
+            // if (lastChatWith === chattingWith) { //if exists check if last chat with is current open chat i.e chattingWith
+            console.log('in3');
+            setCurrentMessageList(messages.reverse());
+            // }
+            //else dont update the message list
+            // }
+            // else { //else update the message list
+            // console.log('in0');
+            // setCurrentMessageList(messages.reverse());
+            // }
         }
         else {
             setCurrentMessageList([]);
@@ -122,7 +129,7 @@ export default function MessageList() {
                 }
 
                 //update side bar
-                setUpdateChatSideBar((prev) => !prev);
+                setUpdateChatSideBar(true);
                 setLastChatWith(chattingWith);
             }
         };
@@ -134,7 +141,7 @@ export default function MessageList() {
         };
     }, [chattingWith, socket]);
 
-    
+
     return (
         <>
             {

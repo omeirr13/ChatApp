@@ -40,7 +40,7 @@ input[type="password"] {
     border-radius: 3px;
 }
 
-button {
+.loginButton {
     display: block;
     width: 9rem !important;
     padding: 10px;

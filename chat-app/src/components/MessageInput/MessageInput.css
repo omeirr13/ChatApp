@@ -1,19 +1,47 @@
 .messageInputContainer{
     display:flex;
-    padding: 0 1rem;
+    flex-direction: column;
+    margin-left:5px;
 }
 
 .messageBodyInput{
-    width:491px !important;
+    width:51rem !important;
+    height:1rem;
+    border-radius:1rem;
+    margin-bottom:8px;
     margin-right:10px;
 }
 .sendMessageBtn{
-    margin:0;
-    background-color: rgb(28, 85, 135);
-    width:6rem;
+    margin:0 7px;
+    height:32px;
+    background-color: #843cff;
+    width:3rem;
+    border-radius:7px;
+    padding:3px;
+    margin-left:5px;
 }
 
 .sendMessageBtn:hover{
     background-color: rgb(27, 74, 115);;
 
+}
+
+.messageInputGrid {
+    display: flex;
+    margin-right: 7px;
+}
+
+.messageInputGridItems {
+    border-top: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+    border-right:1px solid #eaeaea;
+    padding: 6px 9px;
+}
+
+.messageInputGrid:first-child{
+    border-left:1px solid #eaeaea;
+}
+.messageInputOptions{
+    display: flex;
+    justify-content: space-between;
 }

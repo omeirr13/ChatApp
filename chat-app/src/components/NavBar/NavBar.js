@@ -18,11 +18,7 @@ export default function NavBar() {
 
     const loggedInEmail = getItem();// get logged in email
 
-    const handleLogout = () => {
-        deleteItem();
-        navigate("/login");
-        socket.emit('logout', { email: loggedInEmail });
-    }
+
     return (
         <nav>
             <h2 className="nav-heading">Chat-App</h2>
@@ -32,7 +28,7 @@ export default function NavBar() {
                         <ul className="nav-items">
                             <li className="email">{loggedInEmail}</li>
                             <li>
-                                <a href="" onClick={handleLogout}>Logout</a>
+                                <a href="">Logout</a>
                             </li>
                             <li>
                                 <NavLink to="/chat">Chat</NavLink>

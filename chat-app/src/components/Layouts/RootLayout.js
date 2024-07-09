@@ -21,9 +21,14 @@ export default function RootLayout() {
 
     const [updateRequestBar, setUpdateRequestBar] = useState(false);
     const [updateAllUserBar, setUpdateAllUserBar] = useState(false);
+
+    const [userWhoseInfoOpen, setUserWhoseInfoOpen] = useState({});
+
+    const [chatNotOpen, setChatNotOpen] = useState(true);
+
     //useRef
     const messageListContainerRef = useRef(null);
-    
+
     return (
         <ChatContext.Provider value={{
             isLoggedIn,
@@ -50,10 +55,12 @@ export default function RootLayout() {
             updateRequestBar,
             setUpdateRequestBar,
             updateAllUserBar,
-            setUpdateAllUserBar
+            setUpdateAllUserBar,
+            userWhoseInfoOpen,
+            setUserWhoseInfoOpen,
+            setChatNotOpen
         }}>
-
-            {<NavBar />}
+            {chatNotOpen && <NavBar />}
 
             <Outlet
             ></Outlet >

@@ -6,6 +6,8 @@ import { useLocalStorage } from '../../hooks/useLocalStorage';
 import React, { useState, useEffect, useContext } from 'react';
 
 export default function Login() {
+    const { setChatNotOpen } = useContext(ChatContext);
+
     //local storage
     const { setItem } = useLocalStorage('currentLoggedIn');
     const { getItems } = useLocalStorage('users');
@@ -54,6 +56,7 @@ export default function Login() {
         });
         setErrorMessage('');
         console.log('going to emit')
+        setChatNotOpen(false);
         socket.emit('login', { 'email': user.email });
     }
 
@@ -103,7 +106,7 @@ export default function Login() {
                         />
                     </div>
                     <div class="btnContainer">
-                        <button type="submit">Login</button>
+                        <button type="submit" class="loginButton">Login</button>
                     </div>
                 </form>
             </div>

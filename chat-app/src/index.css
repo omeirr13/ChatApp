@@ -46,15 +46,14 @@ code {
 }
 
 .chatParentContainer{
-  margin-top:2rem;
   display:flex;
   justify-content: center;
 }
 .chatContainer{
-  border-radius:1rem;
-  width:55rem;
-  height:35rem;
-  background-color:rgb(37, 40, 42);
+  /* border-radius:1rem; */
+  width:90rem;
+  height:649px;
+  background-color:white;
   display:flex;
 }
 

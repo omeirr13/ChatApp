@@ -3,7 +3,10 @@ import ChatContext from '../../ChatContext';
 import SocketContext from '../../SocketContext'
 import { useContext, useEffect, useState } from 'react';
 import { useLocalStorage } from '../../hooks/useLocalStorage'
-
+import StarImage from '../../images/white-star.png'
+import { faSmile, faFile, } from '@fortawesome/free-regular-svg-icons';
+import { faPaperclip, faDollar, faPlus, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 export default function MessageInput() {
     //hooks
     //useState
@@ -75,7 +78,7 @@ export default function MessageInput() {
         console.log(message, timestamp);
 
         //update the side bar to have most recent chat first
-        setUpdateChatSideBar(!updateChatSideBar);
+        setUpdateChatSideBar(true); 
 
         socket.emit('private_chat',
             newMessage
@@ -87,8 +90,35 @@ export default function MessageInput() {
     }
     return (
         <div className="messageInputContainer">
-            <input type="text" disabled={chattingWith === ''} className="messageBodyInput" onChange={(e) => setMessage(e.target.value)} placeholder="type here..." value={message} name="messageBody"></input>
-            <button type="submit" disabled={chattingWith === ''} className="sendMessageBtn" onClick={() => sendMessage()} >Send</button>
+            <input type="text" disabled={chattingWith === ''} className="messageBodyInput" onChange={(e) => setMessage(e.target.value)} value={message} name="messageBody"></input>
+            <div class="messageInputOptions">
+                <div class="messageInputGrid">
+                    <div class="messageInputGridItems">
+                        <FontAwesomeIcon icon={faPaperclip} className="headerImage"></FontAwesomeIcon>
+                    </div>
+                    <div class="messageInputGridItems">
+                        <FontAwesomeIcon icon={faSmile} className="headerImage"></FontAwesomeIcon>
+                    </div>
+                    <div class="messageInputGridItems">
+                        <FontAwesomeIcon icon={faFile} className="headerImage"></FontAwesomeIcon>
+                    </div>
+                    <div class="messageInputGridItems">
+                        <FontAwesomeIcon icon={faDollar} className="headerImage"></FontAwesomeIcon>
+                    </div>
+                    <div class="messageInputGridItems">
+                        <FontAwesomeIcon icon={faPlus} className="headerImage"></FontAwesomeIcon>
+                    </div>
+
+                </div>
+                <div class="messageInputOptionsRightContainer">
+                    <div class="grid-container">
+                        <div class="grid-item">
+                            <FontAwesomeIcon icon={faPlus} className="headerImage"></FontAwesomeIcon>
+                        </div>
+                    </div>
+                    <button type="submit" disabled={chattingWith === ''} className="sendMessageBtn" onClick={() => sendMessage()} >Send</button>
+                </div>
+            </div>
         </div >
     )
 }

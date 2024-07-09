@@ -1,15 +1,75 @@
 .chatHeaderContainer
 {
-    height:5rem;
-    background-color:rgb(43 54 62);
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    height:4rem;
+    background-color:#ffffff;
+    /* border-top: 3px solid #fafafa; */
+    border-bottom: 3px solid #fafafa;
+    
 }
 
 .chattingWith, .chattingEmail{
     margin:0;
     margin-left:20px;
-    color: #f7f7f7;
+    color: #4d4d4d;
     padding:0;
+}
+
+.chatHeaderUserInfo{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.menu-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* Two columns with the first one taking 1 part and the second 2 parts of the available space */
+    margin-right: 7px;
+}
+
+.menu-item {
+    border: 1px solid #eaeaea;
+    padding: 6px 9px;
+}
+
+.menu-item:first-child {
+    border-radius: 3px 0 0 3px;
+}
+
+.menu-item:nth-child(2) {
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+}
+
+
+.menu-item:last-child{
+    border-radius: 0 3px 3px 0;
+
+}
+.headerImage{
+    width:16px;
+}
+
+.grid-container{
+    display:grid;
+}
+
+
+.menu-wrapper{
+    display: flex;
+    margin-right:13px;
+}
+
+.grid-item {
+    border: 1px solid #eaeaea;
+    padding: 6px 9px;
+    border-radius:8px 8px 8px 8px;
+}
+
+.messageInputOptionsRightContainer{
+    display: flex;
 }

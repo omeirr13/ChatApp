@@ -1,13 +1,27 @@
 .sideBar{
-    height:35rem;
-    width:16rem;
-    background-color: rgb(27, 29, 32);
-    border-radius:1rem;
-    border-right: 10px solid black;
+    height:38rem;
+    width:18rem;
+    background-color: white;
+    border-right: 3px solid #fafafa;
     overflow-y: auto;
 }
 
-.container{
-    padding:17px;
-    
+
+.sideBarToolsContainer{
+    display: flex;
+    margin-top:5px;
+    margin-bottom:5px;
+}
+
+.sideBarToolsInput{
+    width:165px !important;
+    height:1rem;
+    border-radius: 8px !important;
+    margin-left:7px;
+    background-image: url('../../images/search.png');
+    background-repeat: no-repeat;
+      background-position: 152px 6px; 
+      padding: 12px 20px 12px 40px;
+      background-size: 18px 18px; /* Adjust the dimensions as needed */
+
 }
