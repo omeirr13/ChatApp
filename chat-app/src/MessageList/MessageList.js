@@ -15,7 +15,9 @@ export default function MessageList() {
         setChatPool,
         setLastChatWith,
         lastChatWith,
-        messageListContainerRef
+        messageListContainerRef,
+        refreshChatSideBar,
+        setRefreshChatSideBar
     } = useContext(ChatContext);
     const { socket } = useContext(SocketContext);
 
@@ -129,8 +131,10 @@ export default function MessageList() {
                 }
 
                 //update side bar
-                setUpdateChatSideBar(true);
+                console.log('going to change it !');
+                setRefreshChatSideBar(prev => !prev);
                 setLastChatWith(chattingWith);
+                setUpdateChatSideBar(true);
             }
         };
 

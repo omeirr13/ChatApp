@@ -19,7 +19,7 @@ export default function MessageInput() {
 
     //useContext
     const { socket } = useContext(SocketContext);
-    const { chattingWith, setCurrentMessageList, setChatPool, setUpdateChatSideBar, updateChatSideBar, setOfflineMessages, setLastChatWith, messageListContainerRef, lastChatWith } = useContext(ChatContext);
+    const { chattingWith, setCurrentMessageList, setChatPool, setUpdateChatSideBar, updateChatSideBar, setOfflineMessages, setLastChatWith, messageListContainerRef, setRefreshChatSideBar, refreshChatSideBar } = useContext(ChatContext);
 
     //call useLocalStorage function
     const currentLoggedIn = getItem();
@@ -78,7 +78,8 @@ export default function MessageInput() {
         console.log(message, timestamp);
 
         //update the side bar to have most recent chat first
-        setUpdateChatSideBar(true); 
+        setUpdateChatSideBar(true);
+        setRefreshChatSideBar(!refreshChatSideBar);
 
         socket.emit('private_chat',
             newMessage
@@ -88,9 +89,12 @@ export default function MessageInput() {
         setCurrentMessageList((prevMessages) => [newMessage, ...prevMessages]);
         setLastChatWith(chattingWith);
     }
+
+    const { userWhoseInfoOpen } = useContext(ChatContext);
+    const isEmptyObject = Object.keys(userWhoseInfoOpen).length === 0 && userWhoseInfoOpen.constructor === Object;
     return (
         <div className="messageInputContainer">
-            <input type="text" disabled={chattingWith === ''} className="messageBodyInput" onChange={(e) => setMessage(e.target.value)} value={message} name="messageBody"></input>
+            <input type="text" disabled={chattingWith === ''} className={`messageBodyInput chatArea ${isEmptyObject ? 'fullWidthInput' : ''}`} onChange={(e) => setMessage(e.target.value)} value={message} name="messageBody"></input>
             <div class="messageInputOptions">
                 <div class="messageInputGrid">
                     <div class="messageInputGridItems">

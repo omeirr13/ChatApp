@@ -26,6 +26,11 @@ export default function RootLayout() {
 
     const [chatNotOpen, setChatNotOpen] = useState(true);
 
+    const [refreshChatSideBar, setRefreshChatSideBar] = useState(false);
+    const [refreshAllUserBar, setRefreshAllUserBar] = useState(false);
+    
+    const [selectedSideBarButton, setSelectedSideBarButton] = useState('chat');
+
     //useRef
     const messageListContainerRef = useRef(null);
 
@@ -58,7 +63,13 @@ export default function RootLayout() {
             setUpdateAllUserBar,
             userWhoseInfoOpen,
             setUserWhoseInfoOpen,
-            setChatNotOpen
+            setChatNotOpen,
+            refreshChatSideBar,
+            setRefreshChatSideBar,
+            selectedSideBarButton,
+            setSelectedSideBarButton,
+            setRefreshAllUserBar,
+            refreshAllUserBar
         }}>
             {chatNotOpen && <NavBar />}
 

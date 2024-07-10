@@ -1,6 +1,7 @@
 .messageListContainer{
     border-radius:1rem;
-    height:496px;
+    /* height:496px; */
+    height:69vh;
     display: flex;
     flex-direction: column-reverse;
     justify-content: flex-start;
@@ -23,6 +24,7 @@
     color:white;
     display: flex;
     justify-content: center;
-    height:35rem;
+    /* height:35rem; */
+    height:69vh;
     align-items: center;    
 }

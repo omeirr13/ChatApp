@@ -12,7 +12,7 @@ const ChatLayout = () => {
     //hooks
     //useNavigate
     const navigate = useNavigate();
-
+    console.log('rerender btich');
     //useEffect
     useEffect(() => {
         if (!localStorage.getItem('currentLoggedIn')) {
@@ -20,7 +20,12 @@ const ChatLayout = () => {
         }
 
     }, [])
+    const { userWhoseInfoOpen } = useContext(ChatContext);
+    useEffect(() => {
+    }, [userWhoseInfoOpen]);
 
+    const isEmptyObject = Object.keys(userWhoseInfoOpen).length === 0 && userWhoseInfoOpen.constructor === Object;
+    console.log(isEmptyObject);
     return (
         <div className="chatParentContainer">
             <div className="chatWrapper">
@@ -28,7 +33,10 @@ const ChatLayout = () => {
                 <div className="chatContainer">
                     <SideBarChat />
                     <ChatArea />
-                    <UserInfo />
+                    {
+                        !isEmptyObject &&
+                        <UserInfo />
+                    }
                 </div>
             </div>
         </div>

@@ -1,7 +1,9 @@
 .messageInputContainer{
+    position: absolute;
     display:flex;
     flex-direction: column;
     margin-left:5px;
+    bottom:0px;
 }
 
 .messageBodyInput{
@@ -10,6 +12,9 @@
     border-radius:1rem;
     margin-bottom:8px;
     margin-right:10px;
+}
+.fullWidthInput{
+    width:70rem !important;
 }
 .sendMessageBtn{
     margin:0 7px;

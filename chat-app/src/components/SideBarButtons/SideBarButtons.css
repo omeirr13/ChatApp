@@ -21,3 +21,12 @@
     color:grey;
     font-weight: bold;
 }
+
+.active{
+    border-bottom: 2px solid #efa6c3;
+}
+
+
+.activeText{
+    color:#efa6c3 !important;
+}

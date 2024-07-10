@@ -9,7 +9,6 @@ import SideBarTools from '../SideBarTools/SideBarTools';
 import SideBarButtons from '../SideBarButtons/SideBarButtons';
 import AllUserItem from '../AllUseritem/AllUserItem';
 import RequestItem from '../RequestItem/RequestItem';
-import { connect } from 'socket.io-client';
 
 export default function SideBarChat() {
 
@@ -30,49 +29,50 @@ export default function SideBarChat() {
     const { getItems: getConnections, setFriendConnection } = useLocalStorage('connection-pool');
     const { removeItem: removeUser } = useLocalStorage('notConnectedUsers');
     //useContext
-    const { setChattingWith, updateChatSideBar, setUpdateChatSideBar, updateAllUserBar, setUpdateAllUserBar, updateRequestBar, setUpdateRequestBar } = useContext(ChatContext);
+    const { setChattingWith, updateChatSideBar, setUpdateChatSideBar, updateAllUserBar, setUpdateAllUserBar, updateRequestBar, setUpdateRequestBar, refreshChatSideBar, setRefreshChatSideBar, selectedSideBarButton, setRefreshAllUserBar, refreshAllUserBar } = useContext(ChatContext);
     const { socket } = useContext(SocketContext);
 
     const loggedInEmail = getEmail(); //of current logged in user
     const allConnections = getConnections() || {}; //get all connections
 
+    const { getItems: getEmailToUsernameMapping } = useLocalStorage('emailToUsernameMapping');
+    const emailToUsernameMap = getEmailToUsernameMapping();
+    function sortByTimestamp(a, b) {
+        const timeA = a[1][1];
+        const timeB = b[1][1];
 
+        // Compare timestamps (assuming they are in "HH:MM:SS" format)
+        if (timeA > timeB) {
+            return -1;
+        }
+        if (timeA < timeB) {
+            return 1;
+        }
+        return 0;
+    }
     //useEffect
     useEffect(() => {
-        const myConnections = allConnections[loggedInEmail] || {};//filter all connections to get connection logged in user
+        let myConnections = allConnections[loggedInEmail] || {};//filter all connections to get connection logged in user
         console.log('side bar use effect');
-        // let filteredUsers = storedUsers.filter(user => user.email !== email);
+        myConnections = Object.entries(myConnections);
+        myConnections.sort(sortByTimestamp);
 
-        let connectionInfoWithTimestamp = [];
-
-        Object.keys(myConnections).forEach(connection => {
-            const [message, timestamp, messageCount] = myConnections[connection];
-            connectionInfoWithTimestamp.push({
-                email: connection,
-                timestamp: timestamp,
-                message: message,
-                messageCount: messageCount
-            });
-
-        })
-
-        connectionInfoWithTimestamp.sort((a, b) => { //sort the list based on timestamps
-            if (a.timestamp > b.timestamp) return -1;
-            if (a.timestamp < b.timestamp) return 1;
-            return 0;
-        });
-
-        setUsersWithTimestamps(connectionInfoWithTimestamp);
-
-        console.log(usersWithTimestamps);
-    }, [updateChatSideBar])// dependency to update chat side bar based on latest message
+        console.log(myConnections);
+        setUsersWithTimestamps(myConnections);
+    }, [updateChatSideBar, refreshChatSideBar])
 
     useEffect(() => {
         const handleUpdateChatSideBar = (otherSideEmail, emailToUpdate) => {
             setFriendConnection(otherSideEmail, emailToUpdate, '', '');
-            setUpdateChatSideBar(!updateChatSideBar);
             removeUser(otherSideEmail);
-            setUpdateAllUserBar(!updateAllUserBar);
+            // setUpdateChatSideBar(true);
+            if (selectedSideBarButton === 'chat') {
+                setRefreshChatSideBar(!refreshChatSideBar);
+            }
+            if (selectedSideBarButton === 'all') {
+                setRefreshAllUserBar(!refreshAllUserBar);
+            }
+            // setUpdateAllUserBar(false);
         }
         socket.on('updateChatSideBar', handleUpdateChatSideBar);
 
@@ -93,6 +93,7 @@ export default function SideBarChat() {
             const timestamp = connections[inChatOf][1];
             setFriendConnection(loggedInEmail, inChatOf, message, timestamp, 0);
             setUpdateChatSideBar(true);
+            setRefreshChatSideBar(prev => !prev);
         }
     }
 
@@ -106,7 +107,7 @@ export default function SideBarChat() {
         };
 
         fetchData();
-    }, [updateAllUserBar]);
+    }, [updateAllUserBar, refreshAllUserBar]);
 
     useEffect(() => {
         const fetchPendingRequests = () => {
@@ -123,7 +124,9 @@ export default function SideBarChat() {
         const handleAddRequest = (requestFromEmail) => {
             console.log('Handling new request from:', requestFromEmail);
             setPendingRequestList(loggedInEmail, requestFromEmail);
-            setUpdateRequestBar((prev) => !prev);
+            if (selectedSideBarButton === 'requests') {
+                setUpdateRequestBar((prev) => !prev);
+            }
         };
 
         socket.on('addRequest', handleAddRequest);
@@ -134,44 +137,47 @@ export default function SideBarChat() {
     }, [socket, setPendingRequestList, loggedInEmail, setUpdateRequestBar]);
 
 
-    // const handleChange = (e) => {
-    //     const query = e.target.value.toLowerCase();
+    const handleChange = (e) => {
+        const query = e.target.value.toLowerCase();
 
-    //     if (updateChatSideBar) {
-    //         const myConnections = allConnections[loggedInEmail] || {};//filter all connections to get connection logged in user
-    //         console.log(myConnections);
-    //         const filteredConnections = Object.keys(myConnections)
-    //             .filter(email => email.toLowerCase().includes(query));
-    //         console.log(filteredConnections);
-    //         let connectionInfoWithTimestamp = [];
+        if (updateChatSideBar) {
+            let myConnections = allConnections[loggedInEmail] || {};
+            myConnections = Object.entries(myConnections);
+            const filteredData = myConnections.filter(item => {
+                const username = emailToUsernameMap[item[0].toLowerCase()];
+                return username.includes(query);
+            });
 
-    //         Object.keys(filteredConnections).forEach(connection => {
-    //             const [message, timestamp, messageCount] = filteredConnections[connection];
-    //             connectionInfoWithTimestamp.push({
-    //                 email: connection,
-    //                 timestamp: timestamp,
-    //                 message: message,
-    //                 messageCount: messageCount
-    //             });
+            filteredData.sort(sortByTimestamp);
+            setUsersWithTimestamps(filteredData);
+        }
+        else if (updateAllUserBar) {
+            const allUsers = getNotConnectedUsers();
+            let filteredUsers = allUsers.filter(email => email !== loggedInEmail);
 
-    //         })
+            filteredUsers = filteredUsers.filter(email => {
+                const username = emailToUsernameMap[email];
+                return username.includes(query);
+            });
+            setUsers(filteredUsers);
+        }
+        else {
+            const allPendingRequests = getPendingRequestList() || {};
+            const myPendingRequests = allPendingRequests[loggedInEmail] || [];
 
-    //         connectionInfoWithTimestamp.sort((a, b) => { //sort the list based on timestamps
-    //             if (a.timestamp > b.timestamp) return -1;
-    //             if (a.timestamp < b.timestamp) return 1;
-    //             return 0;
-    //         });
-
-    //         setUsersWithTimestamps(connectionInfoWithTimestamp);
-    //         console.log(connectionInfoWithTimestamp);
-    //     }
-    // }
+            const filteredRequests = myPendingRequests.filter(email => {
+                const username = emailToUsernameMap[email];
+                return username.includes(query);
+            });
+            setPendingRequests(filteredRequests);
+        }
+    };
     return (
         <div className="sideBar">
             <div className="sideBarContainer">
                 <SideBarButtons />
                 <div className="sideBarToolsContainer">
-                    <input type="text" className="sideBarToolsInput" placeholder='Search Message' ></input>
+                    <input type="text" className="sideBarToolsInput" placeholder='Search Message' onChange={handleChange} ></input>
                     <SideBarTools />
                 </div>
 
@@ -179,8 +185,8 @@ export default function SideBarChat() {
                 {
                     updateChatSideBar && usersWithTimestamps.map((connection, index) => {
                         return (
-                            <Link to="" key={index} onClick={() => handleClick(connection.email || '', index)}>
-                                <ChatListItem email={connection.email} time={connection.timestamp || ''} lastMessage={connection.message} messageCount={connection.messageCount} className={selectedItemIndex === index ? 'selectedListItem' : ''}
+                            <Link to="" key={index} onClick={() => handleClick(connection[0] || '', index)}>
+                                <ChatListItem email={connection[0]} time={connection[1][1] || ''} lastMessage={connection[1][0]} messageCount={connection[1][2]} className={selectedItemIndex === index ? 'selectedListItem' : ''}
                                 />
                             </Link>
                         )

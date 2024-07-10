@@ -16,10 +16,22 @@
     margin-left:10px;
 }
 
-.requestBtns{
+.requestButtons{
     display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.rejectBtn{
-    background-color: red;
+
+.requestResponseButton{
+    margin-top:5px;
+
+    height:33px;
+    width:6rem;
+    border-radius: 34px;
+}
+
+.rejectRequestButton{
+    background-color: #a61e56;
 }

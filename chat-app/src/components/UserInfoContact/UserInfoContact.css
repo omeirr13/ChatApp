@@ -5,12 +5,11 @@
 }
 
 .openContactInfoHeader{
-    padding: 0 13px;
+    padding: 15px 13px;
     display: flex;
     justify-content: space-between;
 }
 .openContactInfoIcon{
-    margin-top:20px;
 }
 
 .userEmailContainer{
@@ -146,12 +145,11 @@ font-size:13px;
 }
 
 .openTagInfoHeader{
-    padding: 0 13px;
+    padding: 15px 13px;
     display: flex;
     justify-content: space-between;
 }
 .openTagInfoIcon{
-    margin-top:20px;
 }
 
 .openTagHeading{
@@ -161,7 +159,7 @@ font-size:13px;
 
 
 .openDNDInfoHeader{
-    padding: 0 13px;
+    padding: 15px 13px;
     display: flex;
     justify-content: space-between;
 }
@@ -172,7 +170,6 @@ font-size:13px;
 }
 
 .openDNDInfoIcon{
-    margin-top:20px;
 }
 
 
@@ -217,7 +214,6 @@ font-size:13px;
 }
 
 .DFDIcon{
-    margin-top:14px;
     font-size:13px;
     color:grey;
 }

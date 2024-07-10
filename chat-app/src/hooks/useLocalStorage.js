@@ -89,5 +89,20 @@ export const useLocalStorage = (key) => {
     const deleteItem = () => {
         window.localStorage.removeItem(key);
     };
-    return { getItems, setItems, setItem, getItem, deleteItem, setChatMessage, setFriendConnection, setPendingRequestList, removePendingRequest, removeItem }
+
+    const setEmailToUsernameMapping = (email, username) => {
+        // Retrieve existing mappings from localStorage
+        const existingMappingsString = localStorage.getItem('emailToUsernameMapping');
+
+        // Parse existing mappings from localStorage or initialize an empty object
+        const existingMappings = existingMappingsString ? JSON.parse(existingMappingsString) : {};
+
+        // Update the mappings with the new email and username
+        existingMappings[email] = username;
+
+        // Store the updated mappings back into localStorage
+        localStorage.setItem('emailToUsernameMapping', JSON.stringify(existingMappings));
+    };
+
+    return { getItems, setItems, setItem, getItem, deleteItem, setChatMessage, setFriendConnection, setPendingRequestList, removePendingRequest, removeItem, setEmailToUsernameMapping }
 }

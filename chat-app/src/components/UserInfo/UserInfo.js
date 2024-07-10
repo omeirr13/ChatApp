@@ -16,7 +16,7 @@ export default function UserInfo() {
             {
                 !isEmptyObject && (
                     <>
-                        < UserInfoHeader userInfo={userWhoseInfoOpen} />
+                        <UserInfoHeader userInfo={userWhoseInfoOpen} />
                         <UserInfoContact userInfo={userWhoseInfoOpen} />
                     </>
                 )}

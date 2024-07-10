@@ -13,7 +13,6 @@ export default function Signup() {
         confirmPassword: ''
     });
     const [errorMessage, setErrorMessage] = useState('');
-
     //useNavigate
     const navigate = useNavigate();
 
@@ -21,6 +20,7 @@ export default function Signup() {
     const { setItems } = useLocalStorage('users');
     const { setItems: setNotConnectedUsers } = useLocalStorage('notConnectedUsers');
 
+    const { setEmailToUsernameMapping } = useLocalStorage('emailToUsernameMappings');
     //useEffect
     useEffect(() => {
         if (localStorage.getItem('currentLoggedIn')) {
@@ -52,6 +52,7 @@ export default function Signup() {
             password: '',
             confirmPassword: ''
         });
+        setEmailToUsernameMapping(email, username);
     };
     const handleChange = (e) => {
         const updatedFormData = {

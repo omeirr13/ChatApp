@@ -5,6 +5,7 @@ import { faChevronUp, faChevronDown, faPlus, faEnvelope, faBellSlash, faPhone, f
 export default function UserInfoContact({ userInfo }) {
 
     const [showContact, setShowContact] = useState(true);
+    const [showTags, setShowTags] = useState(true);
     const [showDND, setShowDND] = useState(true);
 
     const toggleEmailShow = () => {
@@ -13,6 +14,10 @@ export default function UserInfoContact({ userInfo }) {
 
     const toggleDNDShow = () => {
         setShowDND(!showDND);
+    }
+
+    const toggleTagsShow = () => {
+        setShowTags(!showTags);
     }
     return (
         <div class="userInfoContactContainer">
@@ -68,7 +73,14 @@ export default function UserInfoContact({ userInfo }) {
             <div className="openTagInfo">
                 <div className="openTagInfoHeader">
                     <h3 className="openTagHeading">TAGS</h3>
-                    <FontAwesomeIcon icon={faChevronDown} className="openTagInfoIcon" />
+                    {
+                        showTags ? (
+                            <FontAwesomeIcon icon={faChevronUp} className="openDNDInfoIcon" onClick={toggleTagsShow} />
+                        ) :
+                            (
+                                <FontAwesomeIcon icon={faChevronDown} className="openDNDInfoIcon" onClick={toggleTagsShow} />
+                            )
+                    }
                 </div>
             </div>
 

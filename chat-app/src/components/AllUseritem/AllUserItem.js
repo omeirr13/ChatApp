@@ -15,20 +15,35 @@ export default function AllUserItem({ email }) {
 
     const loggedInUserEmail = getEmail();
 
+    const { getItems: getEmailToUsernameMapping } = useLocalStorage('emailToUsernameMapping');
+    const emailToUsernameMap = getEmailToUsernameMapping();
+
     const handleClick = () => {
         socket.emit('sendRequest', email, loggedInUserEmail);
+    };
+    const getInitials = (name) => {
+        const words = name.split(' ');
+        const initials = words.map(word => word.charAt(0).toUpperCase()).join('');
+
+        return initials;
     };
 
     return (
         <div>
-            <div className="userItem selectedUserItem">
-                <div className="itemNameTime">
-                    <div className="itemNameMessageCount">
-                        <p className="item-name">{email}</p>
-                        <button type="button" onClick={handleClick}>Send Req</button>
+            <div className="chatListItemWrapper">
+                <div className="allUserListItem">
+                    <div className="allUserListItemInfo">
+                        <div className="chatListItemImage">
+                            <span className="chatListItemImageText">{getInitials(emailToUsernameMap[email])}</span>
+                        </div>
+                        <p className="allUserItemName">{emailToUsernameMap[email]}</p>
                     </div>
+                    <button type="button" onClick={handleClick} className="sendRequestButton">Send Req</button>
                 </div>
+
+                {/* <p className="item-text">{lastMessage}</p> */}
             </div>
         </div>
-    );
+
+    )
 }

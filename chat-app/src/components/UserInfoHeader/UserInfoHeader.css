@@ -46,3 +46,22 @@
     background-color:#ece7fe ;
 }
 
+
+.closeUserInfo{
+    width:20px;
+    height:20px;
+    border-radius: 10px;
+    background-color: #a61e56;
+    color:white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:13px;
+    margin-right:15px;
+}
+
+.closeUserInfoButton{
+    width:100%;
+    display: flex;
+    justify-content: end;
+}

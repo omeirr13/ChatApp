@@ -1,5 +1,10 @@
 .chatArea{
+    position: relative;
     width:53rem;
     background-color: #ffffff;
     
+}
+
+.fullWidth{
+    width:72rem;
 }

@@ -13,17 +13,20 @@ export default function RequestItem({ pendingRequestEmail }) {
     const { removeItem: removeUser } = useLocalStorage('notConnectedUsers');
 
     //useContext
-    const { setUpdateChatSideBar, updateChatSideBar, setUpdateRequestBar, updateRequestBar, updateAllUserBar, setUpdateAllUserBar } = useContext(ChatContext);
+    const { setUpdateChatSideBar, updateChatSideBar, setUpdateRequestBar, updateRequestBar, updateAllUserBar, setUpdateAllUserBar, setRefreshChatSideBar, selectedSideBarButton } = useContext(ChatContext);
     const { socket } = useContext(SocketContext);
+    const { getItems: getEmailToUsernameMapping } = useLocalStorage('emailToUsernameMapping');
+    const emailToUsernameMap = getEmailToUsernameMapping();
 
     const email = getEmail();
     const acceptHandler = () => {
         setFriendConnection(email, pendingRequestEmail, '', '');
-        setUpdateChatSideBar(!updateChatSideBar);
+        if (selectedSideBarButton === 'chat') {
+            setRefreshChatSideBar(prev => !prev);
+        }
         removePendingRequest(email, pendingRequestEmail);
         setUpdateRequestBar(!updateRequestBar);
         removeUser(pendingRequestEmail);
-        setUpdateAllUserBar(!updateAllUserBar);
         socket.emit('updateChatSideBar', email, pendingRequestEmail);
     };
 
@@ -32,20 +35,31 @@ export default function RequestItem({ pendingRequestEmail }) {
         setUpdateRequestBar(!updateRequestBar);
 
     }
+    const getInitials = (name) => {
+        const words = name.split(' ');
+        const initials = words.map(word => word.charAt(0).toUpperCase()).join('');
+
+        return initials;
+    };
 
     return (
         <div>
-            <div className="userItem">
-                <div className="itemNameTime">
-                    <div className="itemNameMessageCount">
-                        <p className="item-name">{pendingRequestEmail}</p>
+            <div className="chatListItemWrapper">
+                <div className="allUserListItem">
+                    <div className="allUserListItemInfo">
+                        <div className="chatListItemImage">
+                            <span className="chatListItemImageText">{getInitials(emailToUsernameMap[pendingRequestEmail])}</span>
+                        </div>
+                        <p className="allUserItemName">{emailToUsernameMap[pendingRequestEmail]}</p>
+                    </div>
+                    <div className="requestButtons">
+                        <button type="button" onClick={acceptHandler} className="requestResponseButton acceptRequestButton">Accept</button>
+                        <button type="button" onClick={rejectHandler} className="requestResponseButton rejectRequestButton">Reject</button>
                     </div>
                 </div>
-                <div className="requestBtns">
-                    <button type="button" className="requestBtn" onClick={acceptHandler}>Accept</button>
-                    <button type="button" className="requestBtn rejectBtn" onClick={rejectHandler}>Reject</button>
-                </div>
+
             </div>
         </div>
+
     );
 }

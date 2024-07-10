@@ -18,20 +18,24 @@ export default function ChatHeader() {
 
     //useLocalStorage
     const { getItems } = useLocalStorage("users");
+    const { getItems: getEmailToUsernameMapping } = useLocalStorage('emailToUsernameMapping');
 
+    const emailToUsernameMap = getEmailToUsernameMapping();
+    console.log(emailToUsernameMap);
     //useEffect
-    const getUsername = (email) => {
-        const users = getItems();
-        const user = users.find((user) => user.email === email);
-        if (user) {
-            return user.username;
-        } else {
-            return '';
-        }
-    };
+    // const getUsername = (email) => {
+    //     const users = getItems();
+    //     const user = users.find((user) => user.email === email);
+    //     if (user) {
+    //         return user.username;
+    //     } else {
+    //         return '';
+    //     }
+    // };
     useEffect(() => {
         if (chattingWithEmail !== '') {
-            setUsername(getUsername(chattingWithEmail));
+            setUsername(emailToUsernameMap[chattingWithEmail]);
+            // setUsername(getUsername(chattingWithEmail));
         } else {
             setUsername(''); // Reset username if no email is present
         }
@@ -41,7 +45,7 @@ export default function ChatHeader() {
     const showUserInfo = () => {
         console.log(1);
         setUserWhoseInfoOpen({
-            'username': getUsername(chattingWithEmail),
+            'username': emailToUsernameMap[chattingWithEmail],
             'email': chattingWithEmail
         });
     }
